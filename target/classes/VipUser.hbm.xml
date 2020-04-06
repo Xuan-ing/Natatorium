@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="pojo.VipUser" table="vip_user" schema="natatorium">
+        <id name="id" column="id"/>
+        <property name="name" column="name"/>
+        <property name="tel" column="tel"/>
+        <property name="no" column="no"/>
+        <property name="password" column="password"/>
+        <set name="card" inverse="true">
+            <key/>
+            <one-to-many not-found="ignore" class="pojo.Card"/>
+        </set>
+    </class>
+</hibernate-mapping>
