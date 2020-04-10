@@ -1181,176 +1181,198 @@
       <DefaultExpression>b&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="301" parent="287" name="user_id">
+    <column id="301" parent="287" name="type">
+      <Position>4</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <DefaultExpression>&apos;prepaid_card&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="302" parent="287" name="user_id">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="302" parent="287" name="PRIMARY">
+    <key id="303" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="303" parent="287" name="card_ibfk_1">
+    <foreign-key id="304" parent="287" name="card_ibfk_1">
       <ColNames>user_id</ColNames>
       <RefTableName>vip_user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="304" parent="288" name="id">
+    <column id="305" parent="288" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="305" parent="288" name="discount_rate">
+    <column id="306" parent="288" name="discount_rate">
       <Position>2</Position>
       <DataType>float(3,2 digit)|0s</DataType>
       <DefaultExpression>0.80</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="306" parent="288" name="due_date">
+    <column id="307" parent="288" name="due_date">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="307" parent="288" name="PRIMARY">
+    <key id="308" parent="288" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="308" parent="288" name="discount_card_ibfk_1">
+    <foreign-key id="309" parent="288" name="discount_card_ibfk_1">
       <ColNames>id</ColNames>
       <RefTableName>card</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="309" parent="289" name="id">
+    <column id="310" parent="289" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="310" parent="289" name="reason">
+    <column id="311" parent="289" name="reason">
       <Position>2</Position>
       <DataType>varchar(1024)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="311" parent="289" name="type">
+    <column id="312" parent="289" name="eventType">
       <Position>3</Position>
-      <DataType>bit(3)|0s</DataType>
+      <DataType>varchar(30)|0s</DataType>
+      <DefaultExpression>&apos;report_the_loss&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="312" parent="289" name="PRIMARY">
+    <key id="313" parent="289" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="313" parent="289" name="event_record_ibfk_1">
+    <foreign-key id="314" parent="289" name="event_record_ibfk_1">
       <ColNames>id</ColNames>
       <RefTableName>record</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="314" parent="290" name="id">
+    <column id="315" parent="290" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="290" name="balance">
+    <column id="316" parent="290" name="balance">
       <Position>2</Position>
       <DataType>float(6,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="316" parent="290" name="PRIMARY">
+    <key id="317" parent="290" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="317" parent="290" name="prepaid_card_ibfk_1">
+    <foreign-key id="318" parent="290" name="prepaid_card_ibfk_1">
       <ColNames>id</ColNames>
       <RefTableName>card</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="318" parent="291" name="id">
+    <column id="319" parent="291" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="319" parent="291" name="date">
+    <column id="320" parent="291" name="date">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="320" parent="291" name="type">
+    <column id="321" parent="291" name="type">
       <Position>3</Position>
-      <DataType>bit(1)|0s</DataType>
+      <DataType>varchar(30)|0s</DataType>
+      <DefaultExpression>&apos;usage_record&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="321" parent="291" name="PRIMARY">
+    <column id="322" parent="291" name="card_id">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="323" parent="291" name="card_id">
+      <ColNames>card_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="324" parent="291" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="322" parent="292" name="id">
+    <foreign-key id="325" parent="291" name="record_ibfk_1">
+      <ColNames>card_id</ColNames>
+      <RefTableName>card</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="326" parent="292" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="323" parent="292" name="price">
+    <column id="327" parent="292" name="price">
       <Position>2</Position>
       <DataType>float(10,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="324" parent="292" name="PRIMARY">
+    <key id="328" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="325" parent="292" name="usage_record_ibfk_1">
+    <foreign-key id="329" parent="292" name="usage_record_ibfk_1">
       <ColNames>id</ColNames>
       <RefTableName>record</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="326" parent="293" name="id">
+    <column id="330" parent="293" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="327" parent="293" name="name">
+    <column id="331" parent="293" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="328" parent="293" name="tel">
+    <column id="332" parent="293" name="tel">
       <Position>3</Position>
       <DataType>varchar(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="293" name="no">
+    <column id="333" parent="293" name="no">
       <Position>4</Position>
       <DataType>char(18)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="293" name="password">
+    <column id="334" parent="293" name="password">
       <Position>5</Position>
       <DataType>varchar(18)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="331" parent="293" name="tel">
+    <index id="335" parent="293" name="tel">
       <ColNames>tel</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="332" parent="293" name="PRIMARY">
+    <key id="336" parent="293" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="333" parent="293" name="tel">
+    <key id="337" parent="293" name="tel">
       <ColNames>tel</ColNames>
       <UnderlyingIndexName>tel</UnderlyingIndexName>
     </key>

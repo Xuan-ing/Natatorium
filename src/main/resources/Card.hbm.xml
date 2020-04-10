@@ -3,10 +3,29 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
-    <class name="pojo.Card" table="card" schema="natatorium">
-        <id name="id" column="id"/>
+    <class name="entity.card.Card" table="card" >
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="increment"/>
+        </id>
+        <discriminator column="type" type="java.lang.String"/>
         <property name="availability" column="availability"/>
-        <many-to-one name="vipUser" class="pojo.VipUser"/>
+        <many-to-one name="vipUser" column="user_id" class="entity.VipUser" update="false" cascade="delete"/>
+
+        <set name="recordSet" table="record" inverse="true">
+            <key column="card_id"/>
+            <one-to-many class="entity.record.Record"/>
+        </set>
+
+        <joined-subclass name="entity.card.DiscountCard" table="discount_card">
+            <key column="id"/>
+            <property name="discountRate" column="discount_rate" type="java.lang.Double"/>
+            <property name="dueDate" column="due_date" type="java.sql.Date"/>
+        </joined-subclass>
+
+        <joined-subclass name="entity.card.PrepaidCard" table="prepaid_card">
+            <key column="id"/>
+            <property name="balance" column="balance" type="java.lang.Double"/>
+        </joined-subclass>
+
     </class>
 </hibernate-mapping>

@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="pojo.Administrator" table="administrator" schema="natatorium">
+    <class name="entity.Administrator" table="administrator" schema="natatorium">
         <id name="id" column="id"/>
         <property name="username" column="username"/>
         <property name="password" column="password"/>

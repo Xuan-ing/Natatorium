@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <package name="vipUser" extends="struts-default" >
+        <interceptors>
+            <interceptor name="loginInterceptor" class="interceptor.loginInterceptor"/>
+        </interceptors>
+
+        <action name="userLogin" class="action.VipUserAction" method="login">
+            <result name="success">/home.jsp</result>
+            <result name="loginError">/loginError.jsp</result>
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+        <action name="addVipUser" class="action.VipUserAction" method="add">
+            <result name="login">/home.jsp</result>
+        </action>
+        <action name="updateVipUser" class="action.VipUserAction" method="update">
+            <result name="update">/personInfo.jsp</result>
+        </action>
+        <action name="deleteVipUser" class="action.VipUserAction" method="delete">
+            <result name="list">/userManager.jsp</result>
+        </action>
+        <action name="listVipUser" class="action.VipUserAction" method="list">
+            <result name="list">/userManager.jsp</result>
+        </action>
+    </package>
+
+    <package name="card" extends="struts-default">
+        <action name="reportLoss" class="action.CardAction" method="reportLoss">
+            <result name="cardManager" type="redirectAction">addUserEvent</result>
+        </action>
+        <action name="recoverLoss" class="action.CardAction" method="recoverLoss">
+            <result name="adminCardManager" type="redirectAction">addAdminEvent</result>
+        </action>
+        <action name="addCard" class="action.CardAction" method="addCard">
+            <result name="cardManager">/home.jsp</result>
+        </action>
+        <action name="deleteCard" class="action.CardAction" method="deleteCard">
+            <result name="cardManager">/cardManagement.jsp</result>
+        </action>
+        <action name="recharge" class="action.CardAction" method="recharge" >
+            <result name="success">/home.jsp</result>
+        </action>
+        <action name="consume" class="action.CardAction" method="consume">
+            <result name="success" type="redirectAction">addConsumeEvent</result>
+            <result name="error">/consume-error.jsp</result>
+        </action>
+    </package>
+
+    <package name="event" extends="struts-default" >
+        <action name="addUserEvent" class="action.RecordAction" method="addUserEvent">
+            <result name="cardManager">/cardManager.jsp</result>
+        </action>
+        <action name="addAdminEvent" class="action.RecordAction" method="addAdminEvent">
+            <result name="adminCardManager">/adminCardManager.jsp</result>
+        </action>
+        <action name="addConsumeEvent" class="action.RecordAction" method="addConsumeEvent">
+            <result name="consume">/home.jsp</result>
+        </action>
+    </package>
+
+</struts>

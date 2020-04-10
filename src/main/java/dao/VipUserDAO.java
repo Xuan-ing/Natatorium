@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import pojo.VipUser;
+import entity.VipUser;
 
 import java.util.List;
 
@@ -56,6 +56,16 @@ public class VipUserDAO {
         sessionFactory.close();
     }
 
+    public void delete(int id) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        VipUser vipUser = session.get(VipUser.class, id);
+        session.delete(vipUser);
+        session.getTransaction().commit();
+        session.close();
+        sessionFactory.close();
+    }
     /**
      *
      * @return All exist users stored as a list.
@@ -69,5 +79,21 @@ public class VipUserDAO {
         session.close();
         sessionFactory.close();
         return result;
+    }
+
+    /**
+     * TEST PASSED 9 Apr 2020
+     * @param tel
+     * @param password
+     */
+    public void select(String tel, String password) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Query<VipUser> query = session.createQuery("from VipUser user where user.tel=:tel and user.password=:password")
+                .setString("tel", tel).setString("password", password);
+        List<VipUser> result = query.list();
+
+        session.close();
+        sessionFactory.close();
     }
 }

@@ -1,12 +1,14 @@
 package dao;
 
+import entity.record.Record;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import pojo.Card;
-import pojo.VipUser;
+import entity.card.Card;
+import entity.VipUser;
 
+import javax.crypto.spec.RC2ParameterSpec;
 import java.util.List;
 
 /**
@@ -43,6 +45,19 @@ public class CardDAO {
         return card;
     }
 
+    public void delete(int id) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Card card= session.get(Card.class, id);
+        session.delete(card);
+
+        session.getTransaction().commit();
+        session.close();
+        sessionFactory.close();
+    }
+
     /**
      *
      * @param card The original card object to be updated.
@@ -60,7 +75,7 @@ public class CardDAO {
     public List<Card> listCards(VipUser vipUser) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Query<Card> query = session.createQuery("from Card card where card.id=:id").setInteger("id", vipUser.getId());
+        Query<Card> query = session.createQuery("from Card card where card.vipUser=:vipUser").setInteger("vipUser", vipUser.getId());
         List<Card> result = query.list();
 
         session.close();
