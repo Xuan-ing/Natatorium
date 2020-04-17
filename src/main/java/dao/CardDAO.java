@@ -72,12 +72,14 @@ public class CardDAO {
         sessionFactory.close();
     }
 
-    public List<Card> listCards(VipUser vipUser) {
+    public List<Card> listCards(VipUser curUser) {
+        //System.out.println(curUser.getName());
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Query<Card> query = session.createQuery("from entity.card.Card card where card.vipUser.id=:id").setInteger("id", vipUser.getId());
+        //System.out.println(curUser.getTel());
+        Query<Card> query = session.createQuery("from entity.card.Card card where card.vipUser.id=:id").setInteger("id", curUser.getId());
         List<Card> result = query.list();
-
+        //System.out.println(result.get(0).getAvailability());
         session.close();
         sessionFactory.close();
         return result;

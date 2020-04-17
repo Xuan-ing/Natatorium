@@ -6,18 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<frameset rows="98,*,5" frameborder="no">
-
-    <frame src="navigation.jsp" name="topFrame" id="topFrame"/>
-
-    <frameset cols="168,*"  frameborder="no">
-
-        <frame src="left.jsp"id="leftFrame" />
-
-        <frame src="main.jsp" id="mainFrame" scrolling="yes"/>
-
+<frameset rows="11%,*" border="1px" framespacing="0">
+    <frame src="navigation.jsp" name="top" frameborder="0" />
+    <frameset cols="12%,*"   framespacing="0" framespacing="0">
+        <frame src="left.jsp" name="left" scrolling="auto"/>
+        <frame src="right.jsp" name="right" scrolling="auto"/>
     </frameset>
-
-    <frame src="down.jsp" name="bottomFrame"id="bottomFrame" />
-
 </frameset>

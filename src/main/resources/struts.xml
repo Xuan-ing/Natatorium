@@ -9,7 +9,7 @@
     <package name="vipUser" extends="struts-default" >
 
         <action name="userLogin" class="action.VipUserAction" method="execute">
-            <result name="success">/home.jsp</result>
+            <result name="success" type="redirectAction">getUserCardList</result>
             <result name="loginError">/loginError.jsp</result>
         </action>
         <action name="addVipUser" class="action.VipUserAction" method="add">
@@ -47,7 +47,7 @@
             <result name="error">/consume-error.jsp</result>
         </action>
         <action name="getUserCardList" class="action.CardAction" method="getUserCardList">
-            <result name="getUserCardList">/cardManagement.jsp</result>
+            <result name="getUserCardList">/navigation.jsp</result>
         </action>
 
     </package>

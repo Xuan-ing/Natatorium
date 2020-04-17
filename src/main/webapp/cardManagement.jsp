@@ -8,22 +8,35 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.util.*" %>
+<%@ page import="entity.card.Card" %>
+<%@ page import="entity.VipUser" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <html>
 <head>
     <title>卡包管理</title>
 </head>
 <body>
-    <jsp:include page="navigation.jsp"/>
-    <s:debug/>
-    我的卡包：
-    <s:form action="getUserCardList">
-        <s:iterator var="cards" value="#session.cards">
-            <s:property value="#cards[0].id"/>
-            <s:property value="#cards[0].availability"/>
-        </s:iterator>
-        <br />
-        <label><a href="addCard.jsp">办理新卡</a> </label>
-    </s:form>
+<%  VipUser vipUser = (VipUser) session.getAttribute("vipUser");
+    if (vipUser == null) {%>
+<a href="login.jsp">请先登录</a>
+<% } else { %>
+    <table border="1px" cellpadding="0" width="300px">
+        <tr>
+            <th>id</th>>
+            <th>是否可用</th>
+            <th>类型</th>
+        </tr>
+        <%List<Card> cards =(List<Card>) session.getAttribute("cards");%>
+        <%for (Card card:cards) {%>
+        <tr>
+            <td><%=card.getId()%></td>
+            <td><%=card.getAvailability()%></td>
+            <td><%=card.getType()%>></td>>
+        </tr>
+        <%}%>
+    </table>
+    <br />
+    <label><a href="addCard.jsp">办理新卡</a> </label>
+<% } %>
 </body>
 </html>

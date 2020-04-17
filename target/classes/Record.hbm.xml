@@ -8,7 +8,7 @@
         <id name="id" column="id">
             <generator class="increment"/>
         </id>
-        <discriminator column="type" type="java.lang.String"/>
+        <property name="type" column="type"/>
         <property name="date" column="date"/>
         <many-to-one name="card" class="entity.card.Card" column="card_id" update="false" cascade="delete"/>
 

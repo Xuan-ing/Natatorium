@@ -8,7 +8,7 @@
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="connection.username">root</property>
-    <property name="connection.password">RoringTec.2</property>
+    <property name="connection.password">tonghao</property>
     <mapping resource="Card.hbm.xml"/>
     <mapping resource="VipUser.hbm.xml"/>
     <mapping resource="Administrator.hbm.xml"/>

@@ -94,7 +94,7 @@ public class VipUserAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        //System.out.println("获取值："+username+" "+password);
+        System.out.println("获取值："+username+" "+password);
         vipUser = vipUserDAO.select(username, password);
         //System.out.println(vipUser.getId());
         if(vipUser == null) {

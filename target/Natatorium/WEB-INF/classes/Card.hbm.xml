@@ -7,7 +7,7 @@
         <id name="id" column="id" type="java.lang.Integer">
             <generator class="increment"/>
         </id>
-        <discriminator column="type" type="java.lang.String"/>
+        <property name="type" column="type"/>
         <property name="availability" column="availability"/>
         <many-to-one name="vipUser" column="user_id" class="entity.VipUser" update="false" cascade="delete"/>
 

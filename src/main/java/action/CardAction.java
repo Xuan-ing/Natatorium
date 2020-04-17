@@ -7,21 +7,18 @@ import entity.VipUser;
 import entity.card.Card;
 import entity.card.PrepaidCard;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class CardAction {
     public static Double PRICE;
 
-    private Card card;
-    private CardDAO cardDAO;
-    private List<Card> cards;
+    private Card card = new Card();
+    private CardDAO cardDAO = new CardDAO();
+    private List<Card> cards = new LinkedList<>();
 
     public void setCardDAO(CardDAO cardDAO) {
         this.cardDAO = cardDAO;
-    }
-
-    public List<Card> getCards() {
-        return cards;
     }
 
     public CardDAO getCardDAO() {
@@ -32,8 +29,16 @@ public class CardAction {
         this.card = card;
     }
 
+    public Card getCard() {
+        return card;
+    }
+
     public void setCards(List<Card> cards) {
         this.cards = cards;
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 
     public String addCard() {
@@ -79,9 +84,7 @@ public class CardAction {
      */
     public String getUserCardList() {
         VipUser curVipUser = (VipUser) ActionContext.getContext().getSession().get("vipUser");
-        System.out.println(curVipUser.getName());
         cards = cardDAO.listCards(curVipUser);
-        System.out.println(cards.get(0).getId());
         ActionContext.getContext().getSession().put("cards", cards);//cards放进session
         return "getUserCardList";
     }
