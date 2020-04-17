@@ -73,7 +73,7 @@ public class VipUserDAO {
     public List<VipUser> listUsers() {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Query<VipUser> query = session.createQuery("from VipUser user");
+        Query<VipUser> query = session.createQuery("from entity.VipUser user");
         List<VipUser> result = query.list();
 
         session.close();
@@ -86,14 +86,15 @@ public class VipUserDAO {
      * @param tel
      * @param password
      */
-    public void select(String tel, String password) {
+    public VipUser select(String tel, String password) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Query<VipUser> query = session.createQuery("from VipUser user where user.tel=:tel and user.password=:password")
+        Query<VipUser> query = session.createQuery("from entity.VipUser user where user.tel=:tel and user.password=:password")
                 .setString("tel", tel).setString("password", password);
         List<VipUser> result = query.list();
 
         session.close();
         sessionFactory.close();
+        return result.get(0);
     }
 }

@@ -7,14 +7,10 @@
 <struts>
     <constant name="struts.i18n.encoding" value="UTF-8"/>
     <package name="vipUser" extends="struts-default" >
-        <interceptors>
-            <interceptor name="loginInterceptor" class="interceptor.loginInterceptor"/>
-        </interceptors>
 
-        <action name="userLogin" class="action.VipUserAction" method="login">
+        <action name="userLogin" class="action.VipUserAction" method="execute">
             <result name="success">/home.jsp</result>
             <result name="loginError">/loginError.jsp</result>
-            <interceptor-ref name="loginInterceptor"/>
         </action>
         <action name="addVipUser" class="action.VipUserAction" method="add">
             <result name="login">/home.jsp</result>
@@ -50,6 +46,10 @@
             <result name="success" type="redirectAction">addConsumeEvent</result>
             <result name="error">/consume-error.jsp</result>
         </action>
+        <action name="getUserCardList" class="action.CardAction" method="getUserCardList">
+            <result name="getUserCardList">/cardManagement.jsp</result>
+        </action>
+
     </package>
 
     <package name="event" extends="struts-default" >

@@ -75,7 +75,7 @@ public class CardDAO {
     public List<Card> listCards(VipUser vipUser) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Query<Card> query = session.createQuery("from Card card where card.vipUser=:vipUser").setInteger("vipUser", vipUser.getId());
+        Query<Card> query = session.createQuery("from entity.card.Card card where card.vipUser.id=:id").setInteger("id", vipUser.getId());
         List<Card> result = query.list();
 
         session.close();

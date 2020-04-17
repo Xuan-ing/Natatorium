@@ -1,7 +1,9 @@
 package action;
 
+import com.opensymphony.xwork2.ActionContext;
 import dao.CardDAO;
 import dao.RecordDAO;
+import entity.VipUser;
 import entity.card.Card;
 import entity.card.PrepaidCard;
 
@@ -69,5 +71,18 @@ public class CardAction {
         } else {
             return "error";
         }
+    }
+
+    /**
+     * 传入session里的当前用户，查找拥有的卡，并存入session中
+     * @return
+     */
+    public String getUserCardList() {
+        VipUser curVipUser = (VipUser) ActionContext.getContext().getSession().get("vipUser");
+        System.out.println(curVipUser.getName());
+        cards = cardDAO.listCards(curVipUser);
+        System.out.println(cards.get(0).getId());
+        ActionContext.getContext().getSession().put("cards", cards);//cards放进session
+        return "getUserCardList";
     }
 }

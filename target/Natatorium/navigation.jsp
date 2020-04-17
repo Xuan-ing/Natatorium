@@ -17,5 +17,7 @@
     <a href="cardManagement.jsp">卡包管理</a>
     <a href="userManager.jsp">消费记录</a>
 <% } %>
+<br />
+
 </body>
 </html>
