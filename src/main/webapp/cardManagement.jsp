@@ -18,7 +18,7 @@
 <body>
 <%  VipUser vipUser = (VipUser) session.getAttribute("vipUser");
     if (vipUser == null) {%>
-<a href="login.jsp">请先登录</a>
+<center>请先在上方登录再使用本系统！</center>
 <% } else { %>
     <table border="1px" cellpadding="0" width="300px">
         <tr>

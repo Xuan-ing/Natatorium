@@ -1,6 +1,9 @@
 package dao;
 
+import entity.card.DiscountCard;
+import entity.card.PrepaidCard;
 import entity.record.Record;
+import entity.record.UsageRecord;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -21,6 +24,40 @@ public class CardDAO {
      *
      * @param card A user's card, either prepaid_card or discount_card.
      */
+    public void addDiscountCard(DiscountCard discountCard) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.save(discountCard);
+        session.getTransaction().commit();
+        session.close();
+        sessionFactory.close();
+    }
+    public DiscountCard getDiscountCard(int id) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        DiscountCard discountCard = (DiscountCard) session.get(DiscountCard.class,id);
+        session.close();
+        sessionFactory.close();
+        return discountCard;
+    }
+    public void addPrepaidCard(PrepaidCard prepaidCard) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.save(prepaidCard);
+        session.getTransaction().commit();
+        session.close();
+        sessionFactory.close();
+    }
+    public PrepaidCard getPrepaidCard(int id) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        PrepaidCard prepaidCard = (PrepaidCard) session.get(PrepaidCard.class,id);
+        session.close();
+        sessionFactory.close();
+        return prepaidCard;
+    }
     public void add(Card card) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();

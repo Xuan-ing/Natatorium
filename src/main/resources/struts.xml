@@ -15,8 +15,11 @@
         <action name="addVipUser" class="action.VipUserAction" method="add">
             <result name="login">/home.jsp</result>
         </action>
-        <action name="updateVipUser" class="action.VipUserAction" method="update">
-            <result name="update">/personInfo.jsp</result>
+        <action name="updatePersonInfo" class="action.VipUserAction" method="updatePersonInfo">
+            <result name="updatePersonInfo">/personInfo.jsp</result>
+        </action>
+        <action name="updatePassword" class="action.VipUserAction" method="updatePassword">
+            <result name="updatePassword">/personInfo.jsp</result>
         </action>
         <action name="deleteVipUser" class="action.VipUserAction" method="delete">
             <result name="list">/userManager.jsp</result>

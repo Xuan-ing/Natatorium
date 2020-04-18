@@ -13,7 +13,7 @@
 </head>
 <body>
 <s:form method="post" action="userLogin">
-    手机号：<s:textfield name="username" />
+    手机号：<s:textfield name="tel" />
     密码：<s:password name="password" />
     <s:submit name="submit" value="登录"/>
 

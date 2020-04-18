@@ -86,11 +86,11 @@ public class VipUserDAO {
      * @param tel
      * @param password
      */
-    public VipUser select(String tel, String password) {
+    public VipUser select(String tel) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Query<VipUser> query = session.createQuery("from entity.VipUser user where user.tel=:tel and user.password=:password")
-                .setString("tel", tel).setString("password", password);
+        Query<VipUser> query = session.createQuery("from entity.VipUser user where user.tel=:tel")
+                .setString("tel", tel);
         List<VipUser> result = query.list();
 
         session.close();

@@ -41,7 +41,7 @@ public class CardAction {
         return cards;
     }
 
-    public String addCard() {
+    public String addDiscountCard() {
         cardDAO.add(card);
         return "cardManager";
     }
