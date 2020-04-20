@@ -6,26 +6,33 @@
 
 <struts>
     <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <package name="login" extends="struts-default">
+        <action name="login" class="action.LoginAction" method="login">
+            <result name="login_success">/navigation.jsp</result>
+            <result name="login_error">/loginError.jsp</result>
+        </action>
+        <action name="logout" class="action.LoginAction" method="logout">
+            <result name="logout">/navigation.jsp</result>
+        </action>
+    </package>
     <package name="vipUser" extends="struts-default" >
-
-        <action name="userLogin" class="action.VipUserAction" method="execute">
-            <result name="success" type="redirectAction">getUserCardList</result>
-            <result name="loginError">/loginError.jsp</result>
+        <action name="add" class="action.VipUserAction" method="add">
+            <result name="add_success">/navigation.jsp</result>
         </action>
-        <action name="addVipUser" class="action.VipUserAction" method="add">
-            <result name="login">/home.jsp</result>
+        <action name="update" class="action.VipUserAction" method="update">
+            <result name="update_success">/personInfo.jsp</result>
         </action>
-        <action name="updatePersonInfo" class="action.VipUserAction" method="updatePersonInfo">
-            <result name="updatePersonInfo">/personInfo.jsp</result>
+        <action name="save" class="action.VipUserAction" method="save">
+            <result name="save_success">/personInfo.jsp</result>
         </action>
-        <action name="updatePassword" class="action.VipUserAction" method="updatePassword">
-            <result name="updatePassword">/personInfo.jsp</result>
+        <action name="delete" class="action.VipUserAction" method="delete">
+            <result name="delete_success">/userManager.jsp</result>
         </action>
-        <action name="deleteVipUser" class="action.VipUserAction" method="delete">
+        <action name="list" class="action.VipUserAction" method="list">
             <result name="list">/userManager.jsp</result>
         </action>
-        <action name="listVipUser" class="action.VipUserAction" method="list">
-            <result name="list">/userManager.jsp</result>
+        <action name="inquire" class="action.VipUserAction" method="inquire">
+            <result name="inquire_success">/userManager.jsp</result>
         </action>
     </package>
 

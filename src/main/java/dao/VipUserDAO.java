@@ -2,6 +2,7 @@ package dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import entity.VipUser;
@@ -20,12 +21,10 @@ public class VipUserDAO {
      */
     public void add(VipUser vipUser) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
         session.save(vipUser);
-        session.getTransaction().commit();
-        session.close();
-        sessionFactory.close();
+        transaction.commit();
     }
 
     /**
@@ -35,11 +34,11 @@ public class VipUserDAO {
      */
     public VipUser get(int id) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        VipUser vipUser = session.get(VipUser.class, id);
-        session.close();
-        sessionFactory.close();
-        return vipUser;
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        VipUser curVipUser = session.get(VipUser.class, id);
+        transaction.commit();
+        return curVipUser;
     }
 
     /**
@@ -48,23 +47,21 @@ public class VipUserDAO {
      */
     public void update(VipUser vipUser) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
         session.update(vipUser);
-        session.getTransaction().commit();
-        session.close();
-        sessionFactory.close();
+        transaction.commit();
     }
 
     public void delete(int id) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        VipUser vipUser = session.get(VipUser.class, id);
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from entity.VipUser user where user.id=:id")
+                .setParameter("id",id);
+        VipUser vipUser = (VipUser) query.uniqueResult();
         session.delete(vipUser);
-        session.getTransaction().commit();
-        session.close();
-        sessionFactory.close();
+        transaction.commit();
     }
     /**
      *
@@ -72,29 +69,26 @@ public class VipUserDAO {
      */
     public List<VipUser> listUsers() {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        Query<VipUser> query = session.createQuery("from entity.VipUser user");
-        List<VipUser> result = query.list();
-
-        session.close();
-        sessionFactory.close();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from entity.VipUser user");
+        List<VipUser> result =(List<VipUser>) query.list();
+        transaction.commit();
         return result;
     }
 
     /**
      * TEST PASSED 9 Apr 2020
      * @param tel
-     * @param password
      */
     public VipUser select(String tel) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        Query<VipUser> query = session.createQuery("from entity.VipUser user where user.tel=:tel")
-                .setString("tel", tel);
-        List<VipUser> result = query.list();
-
-        session.close();
-        sessionFactory.close();
-        return result.get(0);
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from entity.VipUser user where user.tel=:tel")
+                .setParameter("tel", tel);
+        VipUser result = (VipUser) query.uniqueResult();
+        transaction.commit();
+        return result;
     }
 }

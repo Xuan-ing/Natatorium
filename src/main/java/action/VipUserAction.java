@@ -1,113 +1,63 @@
 package action;
-
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 import dao.VipUserDAO;
 import entity.VipUser;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class VipUserAction extends ActionSupport {
-    private VipUserDAO vipUserDAO = new VipUserDAO();
+public class VipUserAction extends SuperAction implements ModelDriven<VipUser> {
+
     private VipUser vipUser = new VipUser();
-    private List<VipUser> vipUsers = new LinkedList<>();
-    //以下绑定前端取出的值
-    private String tel;//账号即电话号码
-    private String password;
-    private String name;
-    private String no;
+    private static final long serialVersionUID = 1L;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setNo(String no) {
-        this.no = no;
-    }
-
-    public String getNo() {
-        return no;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public List<VipUser> getVipUsers() {
-        return vipUsers;
-    }
-
-    public void setVipUsers(List<VipUser> vipUsers) {
-        this.vipUsers = vipUsers;
-    }
-
-    public VipUser getVipUser() {
-        return vipUser;
-    }
-
-    public void setVipUser(VipUser vipUser) {
-        this.vipUser = vipUser;
-    }
-
-    public VipUserDAO getVipUserDAO() {
-        return vipUserDAO;
-    }
-
-    public void setVipUserDAO(VipUserDAO vipUserDAO) {
-        this.vipUserDAO = vipUserDAO;
+    @Override
+    public VipUser getModel() {
+        return this.vipUser;
     }
 
     /**
-     * 注册
+     * 直接添加当前用户---注册
      * @return
      */
+
     public String add() {
-        vipUserDAO.add(vipUser);
-        return "login";
+        VipUserDAO vipUserDAO = new VipUserDAO();
+        vipUserDAO.add(vipUser);//根据填入信息
+        return "add_success";
     }
 
-    /**
-     * 用户跟新信息
-     * @return
+    /*
+    管理员根据点击的id，修改对应用户的信息
+    id作为参数，由链接传递进来
      */
-    public String updatePersonInfo() {
-        System.out.println("获取值：" + name + " " + no);
-        vipUser.setName(name);
-        vipUser.setNo(no);
-        vipUserDAO.update(vipUser);
-        return "updatePersonInfo";
+    public String update() {
+        int id = Integer.parseInt(request.getParameter("id"));
+        VipUserDAO vipUserDAO = new VipUserDAO();
+        VipUser user = vipUserDAO.get(id);
+        session.setAttribute("update_user",user);
+        return "update_success";
     }
-    public String updatePassword() {
-        vipUser.setPassword(password);
-        vipUserDAO.update(vipUser);
-        return "updatePassword";
+    /*
+    用户自己更新信息
+    易错：更新的对象应该是查询后再修改，而不是直接修改登入的。
+    这会导致.OptimisticLockException
+*/
+    public String save() {
+        VipUserDAO vipUserDAO = new VipUserDAO();
+        vipUserDAO.update(vipUser);//根据填入信息
+        return "save_success";
     }
-
     /**
+     * 根据前端传入的id
      * 管理员删除后返回用户管理列表
      * @return
      */
     public String delete() {
-
-        vipUserDAO.delete(vipUser.getId());
-        return "list";
+        VipUserDAO vipUserDAO = new VipUserDAO();
+        int id = Integer.parseInt(request.getParameter("id"));//根据选中表中数据
+        vipUserDAO.delete(id);
+        return "delete_success";
     }
 
     /**
@@ -115,20 +65,22 @@ public class VipUserAction extends ActionSupport {
      * @return
      */
     public String list() {
-        vipUsers = vipUserDAO.listUsers();
+        VipUserDAO vipUserDAO = new VipUserDAO();
+        List<VipUser> vipUsers = vipUserDAO.listUsers();
+        if(vipUsers!=null&&vipUsers.size()>0) {
+            session.setAttribute("vipUsers",vipUsers);
+        }
         return "list";
     }
-
-    @Override
-    public String execute() throws Exception {
-        System.out.println("获取值：" + tel + " " + password);
-        vipUser = vipUserDAO.select(tel);
-        //System.out.println(vipUser.getId());
-        if (!vipUser.getPassword().equals(password)) {
-            return "loginError";
-        }
-        ActionContext.getContext().getSession().put("vipUser", vipUser);
-        return "success";
+    /*
+    管理员查询某个用户
+     */
+    public String inquire() {
+        VipUserDAO vipUserDAO = new VipUserDAO();
+        VipUser user = vipUserDAO.get(vipUser.getId());//根据搜索框输入的id
+        session.setAttribute("vipUser_selected",user);
+        return "inquire_success";
     }
-}
 
+
+}

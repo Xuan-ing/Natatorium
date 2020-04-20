@@ -10,13 +10,15 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <html>
 <body>
-<%  VipUser vipUser = (VipUser) session.getAttribute("vipUser");
+<%  VipUser vipUser = (VipUser) session.getAttribute("curVipUser");
     if (vipUser == null) {%>
     <a href="login.jsp">点击登录</a>
 <% } else { %>
-<s:iterator var="curUser" value="#session.vipUser">
-    欢迎：<s:property value="#curUser.name"></s:property>
+<s:iterator var="curUser" value="#session.curVipUser">
+    欢迎：<s:property value="#curUser.name"/>
 </s:iterator>
+<br/>
+<a href="<s:url action="logout"/>">安全退出</a>
 <% } %>
 <br />
 
