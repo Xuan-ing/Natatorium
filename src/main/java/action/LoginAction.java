@@ -6,8 +6,9 @@ import entity.VipUser;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 
-public class LoginAction extends ActionSupport {
+public class LoginAction extends SuperAction {
 
+    private static final long serialVersionUID = 1L;
     private VipUser vipUser = new VipUser();
 
     public VipUser getVipUser() {
@@ -21,17 +22,21 @@ public class LoginAction extends ActionSupport {
     public String login()  {
         VipUserDAO vipUserDAO = new VipUserDAO();
         VipUser curVipUser = vipUserDAO.select(vipUser.getTel());
-        if (!curVipUser.getPassword().equals(vipUser.getPassword())) {
-            return "login_error";
+        if(curVipUser == null) {
+            return "account_error";
         }
-        ActionContext.getContext().getSession().put("curVipUser", curVipUser);
-        return "login_success";
+        else if (!curVipUser.getPassword().equals(vipUser.getPassword())) {
+            return "password_error";
+        } else {
+            session.setAttribute("curVipUser", curVipUser);
+            return "login_success";
+        }
     }
     @SkipValidation
     public String logout() {
         if(ActionContext.getContext().getSession().get("curVipUser")!=null)
         {
-            ActionContext.getContext().getSession().remove("curVipUser");
+            session.removeAttribute("curVipUser");
         }
 
         return "logout";

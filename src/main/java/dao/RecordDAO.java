@@ -36,7 +36,7 @@ public class RecordDAO {
     public List<Record> listRecords(Card card) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Query<Record> query = session.createQuery("from entity.record.Record record where record.card=:card").setInteger("card", card.getId());
+        Query<Record> query = session.createQuery("from entity.record.Record record where record.card=:card").setParameter("card", card.getId());
         List<Record> result = query.list();
 
         session.close();

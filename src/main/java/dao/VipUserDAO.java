@@ -47,9 +47,9 @@ public class VipUserDAO {
      */
     public void update(VipUser vipUser) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.update(vipUser);
+        session.merge(vipUser);
         transaction.commit();
     }
 
@@ -87,6 +87,9 @@ public class VipUserDAO {
         Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("from entity.VipUser user where user.tel=:tel")
                 .setParameter("tel", tel);
+        if(query.list().size() == 0){
+            return null;
+        }
         VipUser result = (VipUser) query.uniqueResult();
         transaction.commit();
         return result;

@@ -9,7 +9,8 @@
     <package name="login" extends="struts-default">
         <action name="login" class="action.LoginAction" method="login">
             <result name="login_success">/navigation.jsp</result>
-            <result name="login_error">/loginError.jsp</result>
+            <result name="password_error">/passwordError.jsp</result>
+            <result name="account_error">/accountError.jsp</result>
         </action>
         <action name="logout" class="action.LoginAction" method="logout">
             <result name="logout">/navigation.jsp</result>
@@ -37,41 +38,33 @@
     </package>
 
     <package name="card" extends="struts-default">
-        <action name="reportLoss" class="action.CardAction" method="reportLoss">
-            <result name="cardManager" type="redirectAction">addUserEvent</result>
+        <action name="getCards" class="action.CardAction" method="getCards">
+            <result name="getCards">/cardManagement.jsp</result>
         </action>
-        <action name="recoverLoss" class="action.CardAction" method="recoverLoss">
-            <result name="adminCardManager" type="redirectAction">addAdminEvent</result>
+        <action name="addDiscountCard" class="action.DiscountCardAction" method="addDiscountCard">
+            <result name="addDiscountCard">/addDiscountCard.jsp</result>
         </action>
-        <action name="addCard" class="action.CardAction" method="addCard">
-            <result name="cardManager">/home.jsp</result>
+        <action name="selectDiscountCard" class="action.DiscountCardAction" method="selectDiscountCard">
+            <result name="selectDiscountCard">/cardDetail.jsp</result>
+        </action>
+        <action name="updateDiscountCard" class="action.DiscountCardAction" method="updateDiscountCard">
+            <result name="updateDiscountCard">/cardManagement.jsp</result>
+        </action>
+        <action name="addPrepaidCard" class="action.PrepaidCardAction" method="addPrepaidCard">
+            <result name="addPrepaidCard">/addPrepaidCard.jsp</result>
+        </action>
+        <action name="selectPrepaidCard" class="action.PrepaidCardAction" method="selectPrepaidCard">
+            <result name="selectPrepaidCard">/cardDetail.jsp</result>
+        </action>
+        <action name="updatePrepaidCard" class="action.PrepaidCardAction" method="updatePrepaidCard">
+            <result name="updatePrepaidCard">/cardManagement.jsp</result>
         </action>
         <action name="deleteCard" class="action.CardAction" method="deleteCard">
-            <result name="cardManager">/cardManagement.jsp</result>
+            <result name="deleteCard">/cardManagement.jsp</result>
         </action>
-        <action name="recharge" class="action.CardAction" method="recharge" >
-            <result name="success">/home.jsp</result>
-        </action>
-        <action name="consume" class="action.CardAction" method="consume">
-            <result name="success" type="redirectAction">addConsumeEvent</result>
-            <result name="error">/consume-error.jsp</result>
-        </action>
-        <action name="getUserCardList" class="action.CardAction" method="getUserCardList">
-            <result name="getUserCardList">/navigation.jsp</result>
-        </action>
-
     </package>
 
     <package name="event" extends="struts-default" >
-        <action name="addUserEvent" class="action.RecordAction" method="addUserEvent">
-            <result name="cardManager">/cardManager.jsp</result>
-        </action>
-        <action name="addAdminEvent" class="action.RecordAction" method="addAdminEvent">
-            <result name="adminCardManager">/adminCardManager.jsp</result>
-        </action>
-        <action name="addConsumeEvent" class="action.RecordAction" method="addConsumeEvent">
-            <result name="consume">/home.jsp</result>
-        </action>
     </package>
 
 </struts>

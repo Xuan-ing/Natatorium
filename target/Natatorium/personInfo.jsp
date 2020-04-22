@@ -11,7 +11,7 @@
 <%  VipUser vipUser = (VipUser) session.getAttribute("curVipUser");
     if (vipUser == null) {%>
 <center>请先在上方登录再使用本系统！</center>
-<% } else { vipUser = null; %>
+<% } else {%>
 
 <script>
     let btn = document.getElementById("btn");
@@ -28,7 +28,7 @@
         }
     }
 </script>
-<s:url action="logout"/>
+
 <s:form method="POST" action="save">
    <s:iterator var="curUser" value="#session.curVipUser">
         电话号码：<s:textfield id="tel" name="tel" disabled="true" value="%{#curUser.tel}"/>
