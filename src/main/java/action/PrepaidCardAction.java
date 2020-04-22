@@ -3,7 +3,6 @@ package action;
 import dao.CardDAO;
 import entity.VipUser;
 import entity.card.PrepaidCard;
-import entity.card.PrepaidCard;
 
 public class PrepaidCardAction extends SuperAction  {
     private static final long serialVersionUID = 1L;

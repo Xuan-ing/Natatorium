@@ -9,11 +9,13 @@ action\PrepaidCardAction.class
 entity\record\Record.class
 action\CardAction.class
 action\RecordAction.class
+action\EventRecordAction.class
 action\VipUserAction.class
 dao\CardDAO.class
 entity\record\UsageRecord.class
 entity\Administrator.class
 entity\card\DiscountCard.class
+action\UsageRecordAction.class
 entity\record\EventRecord.class
 dao\AdministratorDAO.class
 dao\VipUserDAO.class

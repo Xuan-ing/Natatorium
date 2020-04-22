@@ -18,21 +18,20 @@
             <th>操作</th>
 
         </tr>
-       <s:iterator value="#session.cards" var="cards">
-           <tr class="list-cell">
-            <td>666<s:property value="#cards.id"/></td>
-            <td>666<s:property value="#cards.availability"/></td>
-            <td>666<s:property value="#cards.type"/></td>>
-            <td>6666
-                <s:if test='%{#cards.type=="discountCard"}'>
-                    <a href="selectDiscountCard.action?id=<s:property value="#cards.id"/>">查看</a>
+       <s:iterator value="#session.cardList" var="card">
+           <tr>
+            <td><s:property value="#card.id"/></td>
+            <td><s:property value="#card.availability"/></td>
+            <td><s:property value="#card.type"/></td>>
+            <td>
+                <s:if test='%{#card.type=="discountCard"}'>
+                    <a href="selectDiscountCard.action?id=<s:property value="#card.id"/>">查看</a>
                 </s:if>
                 <s:else>
-                    <a href="selectPrepaidCard.action?id=<s:property value="#cards.id"/>">查看</a>
+                    <a href="selectPrepaidCard.action?id=<s:property value="#card.id"/>">查看</a>
                 </s:else>
             </td>
            </tr>
-<
        </s:iterator>
     </table>
     <br />

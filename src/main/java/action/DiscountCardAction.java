@@ -1,6 +1,5 @@
 package action;
 
-import com.opensymphony.xwork2.ModelDriven;
 import dao.CardDAO;
 import entity.VipUser;
 import entity.card.DiscountCard;

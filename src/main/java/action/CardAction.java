@@ -29,11 +29,11 @@ public class CardAction extends SuperAction {
      *
      */
     public String getCards() {
-        session.removeAttribute("cards");
         VipUser curVipUser = (VipUser) session.getAttribute("curVipUser");
         CardDAO cardDAO =new  CardDAO();
-        List<Card> cards = cardDAO.listCards(curVipUser);
-        session.setAttribute("cards", cards);//cards放进session
+        List<Card> cardList = cardDAO.listCards(curVipUser);
+        //System.out.println("读取该用户：" + cardList.size() + "张卡");
+        session.setAttribute("cardList", cardList);//cards放进session,多次运行最新的会覆盖以前的
         return "getCards";
     }
 }

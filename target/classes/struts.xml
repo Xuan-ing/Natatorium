@@ -65,6 +65,29 @@
     </package>
 
     <package name="event" extends="struts-default" >
+        <action name="addUserEvent" class="action.RecordAction" method="addUserEvent">
+            <result name="cardManager">/cardManagement.jsp</result>
+        </action>
+
+        <action name="addAdminEvent" class="action.RecordAction" method="addAdminEvent">
+            <result name="adminCardManager">/adminCardManagement.jsp</result>
+        </action>
+
+        <action name="addConsumptionEvent" class="action.RecordAction" method="addConsumptionEvent">
+            <result name="consumption">/home.jsp</result>
+        </action>
+        <action name="queryRecordsByUser" class="action.RecordAction" method="queryRecordsByUser">
+            <result name="queryRecordsByUser">/recordsByUser.jsp</result>
+        </action>
+        <action name="queryRecordsByCard" class="action.RecordAction" method="queryRecordsByCard">
+            <result name="queryRecordsByCard">/recordsByUser.jsp</result>
+        </action>
+        <action name="queryEventRecords" class="action.EventRecordAction" method="execute">
+            <result name="success">/recordsByUser.jsp</result>
+        </action>
+        <action name="queryRecordsAction" class="action.UsageRecordAction" method="execute">
+            <result name="success">/recordsByUser.jsp</result>
+        </action>
     </package>
 
 </struts>

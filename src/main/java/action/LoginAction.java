@@ -1,6 +1,6 @@
 package action;
+
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 import dao.VipUserDAO;
 import entity.VipUser;
 import org.apache.struts2.interceptor.validation.SkipValidation;

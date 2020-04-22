@@ -1,7 +1,9 @@
 package dao;
 
 import entity.card.Card;
+import entity.record.EventRecord;
 import entity.record.Record;
+import entity.record.UsageRecord;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -36,8 +38,30 @@ public class RecordDAO {
     public List<Record> listRecords(Card card) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Query<Record> query = session.createQuery("from entity.record.Record record where record.card=:card").setParameter("card", card.getId());
+        Query<Record> query = session.createQuery("from entity.record.Record record where record.card.id=:id").setParameter("id", card.getId());
         List<Record> result = query.list();
+
+        session.close();
+        sessionFactory.close();
+        return result;
+    }
+
+    public List<EventRecord> listEventRecords(Card card) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Query<EventRecord> query = (Query<EventRecord>) session.createQuery("from entity.record.EventRecord eventRecord where eventRecord.card.id=:id").setParameter("id", card.getId());
+        List<EventRecord> result = query.list();
+
+        session.close();
+        sessionFactory.close();
+        return result;
+    }
+
+    public List<UsageRecord> listUsageRecords(Card card) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Query<UsageRecord> query = (Query<UsageRecord>) session.createQuery("from entity.record.UsageRecord usageRecord where usageRecord.card.id=:id").setParameter("id", card.getId());
+        List<UsageRecord> result = query.list();
 
         session.close();
         sessionFactory.close();

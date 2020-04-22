@@ -10,7 +10,9 @@ D:\B\Natatorium\src\main\java\action\DiscountCardAction.java
 D:\B\Natatorium\src\main\java\action\PrepaidCardAction.java
 D:\B\Natatorium\src\main\java\dao\CardDAO.java
 D:\B\Natatorium\src\main\java\entity\record\EventRecord.java
+D:\B\Natatorium\src\main\java\action\EventRecordAction.java
 D:\B\Natatorium\src\main\java\entity\record\UsageRecord.java
+D:\B\Natatorium\src\main\java\action\UsageRecordAction.java
 D:\B\Natatorium\src\main\java\entity\card\PrepaidCard.java
 D:\B\Natatorium\src\main\java\dao\RecordDAO.java
 D:\B\Natatorium\src\main\java\entity\record\Record.java

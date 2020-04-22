@@ -97,7 +97,7 @@ public class CardDAO {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         //System.out.println(curUser.getTel());
-        Query<Card> query = session.createQuery("from entity.card.Card card where card.vipUser.id=:id").setParameter("id", curUser.getId());
+        Query query = session.createQuery("from entity.card.Card card where card.vipUser.id=:id").setParameter("id", curUser.getId());
         List<Card> result = query.list();
         //System.out.println(result.get(0).getAvailability());
         session.close();

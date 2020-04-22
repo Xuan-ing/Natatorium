@@ -1,9 +1,9 @@
 package action;
+
 import com.opensymphony.xwork2.ModelDriven;
 import dao.VipUserDAO;
 import entity.VipUser;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class VipUserAction extends SuperAction implements ModelDriven<VipUser> {
@@ -18,7 +18,7 @@ public class VipUserAction extends SuperAction implements ModelDriven<VipUser> {
 
     /**
      * 直接添加当前用户---注册
-     * @return
+     *
      */
 
     public String add() {
@@ -51,7 +51,7 @@ public class VipUserAction extends SuperAction implements ModelDriven<VipUser> {
     /**
      * 根据前端传入的id
      * 管理员删除后返回用户管理列表
-     * @return
+     *
      */
     public String delete() {
         VipUserDAO vipUserDAO = new VipUserDAO();
@@ -62,7 +62,7 @@ public class VipUserAction extends SuperAction implements ModelDriven<VipUser> {
 
     /**
      * 管理员查看所有的用户
-     * @return
+     *
      */
     public String list() {
         VipUserDAO vipUserDAO = new VipUserDAO();

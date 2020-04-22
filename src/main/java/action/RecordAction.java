@@ -1,14 +1,20 @@
 package action;
 
+import com.opensymphony.xwork2.ActionContext;
 import dao.RecordDAO;
+import dao.VipUserDAO;
+import entity.VipUser;
+import entity.card.Card;
+import entity.record.EventRecord;
 import entity.record.Record;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class RecordAction {
-    private Record record;
-    private RecordDAO recordDAO;
-    private List<Record> recordList;
+public class RecordAction extends SuperAction {
+    private Record record = new Record();
+    private RecordDAO recordDAO = new RecordDAO();
+    private List<Record> recordList = new ArrayList<>();
 
     public void setRecord(Record record) {
         this.record = record;
@@ -36,18 +42,38 @@ public class RecordAction {
 
     /**
      * 用于区分不同页面，实际都是添加了事件
+     *
      * @return
      */
     public String addUserEvent() {
         recordDAO.add(record);
-        return "cardManager";
+        return "cardManagement";
     }
+
     public String addAdminEvent() {
         recordDAO.add(record);
-        return "adminCardManager";
+        return "adminCardManagement";
     }
-    public String addConsumeEvent() {
+
+    public String addConsumptionEvent() {
         recordDAO.add(record);
-        return "consume";
+        return "consumption";
+    }
+
+    public String queryRecordsByUser() {
+        List<Card> cards = (List<Card>) session.getAttribute("cards");
+        List<Record> allRecordsOfCards = new ArrayList<>();
+        for (Card card : cards) {
+            List<Record> records = recordDAO.listRecords(card);
+            allRecordsOfCards.addAll(records);
+        }
+        session.setAttribute("allUserRecords", allRecordsOfCards);
+        return "queryRecordsByUser";
+    }
+
+    public String queryRecordsByCard() {
+        List<Record> records = recordDAO.listRecords(record.getCard());
+        session.setAttribute("allCardRecords", records);
+        return "queryRecordsByCard";
     }
 }
