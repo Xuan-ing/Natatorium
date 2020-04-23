@@ -9,5 +9,6 @@
         <li ><a href="<s:url action="getCards"/>" target="right"> 卡包管理</a></li>
         <li ><a href="<s:url action="getPrepaidCards"/>" target="right" >充值</a></li>
         <li ><a href="<s:url action="queryRecordsAction"/>" target="right" >查看消费/充值记录</a></li>
+        <li ><a href="adminLogin.jsp" target="right" >管理员入口</a></li>
     </ul>
 </div>

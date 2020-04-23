@@ -16,6 +16,28 @@
             <result name="logout">/navigation.jsp</result>
         </action>
     </package>
+    <package name="administrator" extends="struts-default">
+        <action name="adminLogin" class="action.AdministratorAction" method="login">
+            <result name="admin_login_success" type="redirectAction">selectAllUser</result>
+            <result name="password_error">/passwordError.jsp</result>
+            <result name="account_error">/accountError.jsp</result>
+        </action>
+        <action name="adminLogout" class="action.AdministratorAction" method="logout">
+            <result name="admin_logout">/adminLogin.jsp</result>
+        </action>
+        <action name="selectAllUser" class="action.AdministratorAction" method="selectAllUser">
+            <result name="selectAllUser">/userManager.jsp</result>
+        </action>
+        <action name="selectAllCard" class="action.AdministratorAction" method="selectAllCard">
+            <result name="selectAllCard">/adminCardManager.jsp</result>
+        </action>
+        <action name="adminEditorPersonInfo" class="action.VipUserAction" method="adminEditorPersonInfo">
+            <result name="adminEditorPersonInfo" type="redirectAction">selectAllUser</result>
+        </action>
+        <action name="adminEditorCardInfo" class="action.CardAction" method="adminEditorCardInfo">
+            <result name="adminEditorCardInfo" type="redirectAction">selectAllCard</result>
+        </action>
+    </package>
     <package name="vipUser" extends="struts-default" >
         <action name="add" class="action.VipUserAction" method="add">
             <result name="add_success">/navigation.jsp</result>

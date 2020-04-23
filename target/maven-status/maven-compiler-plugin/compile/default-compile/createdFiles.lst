@@ -1,6 +1,7 @@
 action\DiscountCardAction.class
 App.class
 entity\card\PrepaidCard.class
+action\AdministratorAction.class
 action\SuperAction.class
 entity\VipUser.class
 dao\RecordDAO.class

@@ -24,12 +24,8 @@
             <td><s:property value="#card.availability"/></td>
             <td><s:property value="#card.type"/></td>>
             <td>
-                <s:if test='%{#card.type=="discountCard"}'>
-                    <a href="selectDiscountCard.action?id=<s:property value="#card.id"/>">查看</a>
-                </s:if>
-                <s:else>
-                    <a href="selectPrepaidCard.action?id=<s:property value="#card.id"/>">查看</a>
-                </s:else>
+                <a href="selectDiscountCard.action?id=<s:property value="#card.id"/>">提交修改</a>
+
             </td>
            </tr>
        </s:iterator>

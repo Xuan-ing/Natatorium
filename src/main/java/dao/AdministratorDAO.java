@@ -1,7 +1,9 @@
 package dao;
 
+import entity.VipUser;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import entity.Administrator;
@@ -64,5 +66,19 @@ public class AdministratorDAO {
         session.close();
         sessionFactory.close();
         return result;
+    }
+
+    public Administrator select(String username) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from entity.Administrator admin where admin.username=:username")
+                .setParameter("username", username);
+        if(query.list().size() == 0){
+            return null;
+        }
+        Administrator administrator = (Administrator) query.uniqueResult();
+        transaction.commit();
+        return administrator;
     }
 }

@@ -81,7 +81,7 @@ public class CardDAO {
         Transaction transaction = session.beginTransaction();
         PrepaidCard prepaidCard = session.get(PrepaidCard.class,id);
         double balance = prepaidCard.getBalance();
-        if(balance > 60)
+        if(balance >= 60)
             prepaidCard.setBalance(balance-60);
         transaction.commit();
     }
@@ -99,6 +99,15 @@ public class CardDAO {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         Query query = session.createQuery("from entity.card.PrepaidCard card where card.vipUser.id=:id").setParameter("id", user.getId());
+        List<PrepaidCard> result = query.list();
+        session.close();
+        sessionFactory.close();
+        return result;
+    }
+    public List<PrepaidCard> allPrepaidCard() {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("from entity.card.PrepaidCard card");
         List<PrepaidCard> result = query.list();
         session.close();
         sessionFactory.close();
@@ -135,5 +144,13 @@ public class CardDAO {
         session.close();
         sessionFactory.close();
         return result;
+    }
+    public void adminEditorCardInfo(int id,Boolean availability) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        PrepaidCard prepaidCard = session.get(PrepaidCard.class,id);
+        prepaidCard.setAvailability(availability);
+        transaction.commit();
     }
 }

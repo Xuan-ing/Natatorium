@@ -38,4 +38,17 @@ public class CardAction extends SuperAction {
         }
         return "getCards";
     }
+    public String adminSaveCard() {
+        CardDAO cardDAO = new CardDAO();
+        int id = Integer.parseInt(request.getParameter("id"));
+        cardDAO.delete(id);
+        return "adminSaveCard";
+    }
+    public String adminEditorCardInfo() {
+        CardDAO cardDAO = new CardDAO();
+        int id = Integer.parseInt(request.getParameter("id"));//根据选中表中数据
+        boolean availability = Boolean.parseBoolean(request.getParameter("availability"));
+        cardDAO.adminEditorCardInfo(id,availability);
+        return "adminEditorCardInfo";
+    }
 }

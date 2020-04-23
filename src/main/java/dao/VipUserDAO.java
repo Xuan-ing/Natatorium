@@ -56,6 +56,15 @@ public class VipUserDAO {
         vipUser.setNo(curVipUser.getNo());
         transaction.commit();
     }
+    public void adminUpdatePersonInfo(int id,String name,String no) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        VipUser vipUser = session.get(VipUser.class,id);
+        vipUser.setName(name);
+        vipUser.setNo(no);
+        transaction.commit();
+    }
     public void updatePassword(int id,String password) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();

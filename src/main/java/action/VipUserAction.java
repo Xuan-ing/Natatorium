@@ -75,11 +75,14 @@ public class VipUserAction extends SuperAction implements ModelDriven<VipUser> {
      * 管理员删除后返回用户管理列表
      *
      */
-    public String delete() {
+    public String adminEditorPersonInfo() {
         VipUserDAO vipUserDAO = new VipUserDAO();
         int id = Integer.parseInt(request.getParameter("id"));//根据选中表中数据
-        vipUserDAO.delete(id);
-        return "delete_success";
+        String no = request.getParameter("no");
+        String name = request.getParameter("name");
+        System.out.println("ID:"+id+" name:"+name+" no:"+no);
+        vipUserDAO.adminUpdatePersonInfo(id,name,no);
+        return "adminEditorPersonInfo";
     }
 
     /**
