@@ -60,7 +60,7 @@ public class RecordDAO {
     public List<UsageRecord> listUsageRecords(Card card) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Query<UsageRecord> query = (Query<UsageRecord>) session.createQuery("from entity.record.UsageRecord usageRecord where usageRecord.card.id=:id").setParameter("id", card.getId());
+        Query query =  session.createQuery("from entity.record.UsageRecord usageRecord where usageRecord.card.id=:id").setParameter("id", card.getId());
         List<UsageRecord> result = query.list();
 
         session.close();

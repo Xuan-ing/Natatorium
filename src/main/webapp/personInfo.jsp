@@ -1,7 +1,5 @@
 <%@ page import="entity.VipUser" %>
-<%@ page import="java.util.concurrent.locks.Lock" %>
-<%@ page import="org.hibernate.LockMode" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"  %>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
@@ -10,7 +8,7 @@
 <body>
 <%  VipUser vipUser = (VipUser) session.getAttribute("curVipUser");
     if (vipUser == null) {%>
-<center>请先在上方登录再使用本系统！</center>
+<div style="text-align: center;">请先登录再使用本系统！</div>
 <% } else {%>
 
 <script>
@@ -27,9 +25,13 @@
             document.getElementById("no").disabled = true;
         }
     }
+    function hint()
+    {
+        alert("密码修改成功，请记住自己的新密码！");
+    }
 </script>
 
-<s:form method="POST" action="save">
+<s:form method="POST" action="updatePersonInfo">
    <s:iterator var="curUser" value="#session.curVipUser">
         电话号码：<s:textfield id="tel" name="tel" disabled="true" value="%{#curUser.tel}"/>
        <br/>
@@ -40,6 +42,15 @@
     <input type="button" id="btn" onclick="editable()" value="编辑"/> &nbsp;
    </s:iterator>
     <s:submit value="提交"/>
+</s:form>
+<br/>
+<br/>
+<br/>
+<s:form method="POST" action="updatePasswprd">
+    <s:iterator var="curUser" value="#session.curVipUser">
+        新密码：<s:password  name="password"/>
+    </s:iterator>
+    <s:submit value="修改密码" onclick="hint()"/>
 </s:form>
 
 <%}%>

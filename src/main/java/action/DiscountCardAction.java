@@ -19,6 +19,7 @@ public class DiscountCardAction extends SuperAction  {
     public void setDiscountCard(DiscountCard discountCard) {
         this.discountCard = discountCard;
     }
+
     public String addDiscountCard() {
         CardDAO cardDAO = new CardDAO();
         DiscountCard newDiscountCard = new DiscountCard();
@@ -41,10 +42,11 @@ public class DiscountCardAction extends SuperAction  {
         session.setAttribute("curDiscountCard",curDiscountCard);
         return "selectDiscountCard";
     }
-    public String updateDiscountCard() {
+    public String outOfDate() {
         CardDAO cardDAO = new CardDAO();
-        cardDAO.updateDiscountCard(discountCard);
-        return "updateDiscountCard";
+        DiscountCard curDiscountCard = (DiscountCard) session.getAttribute("curDiscountCard") ;
+        cardDAO.updateDiscountCard(curDiscountCard.getId());
+        return "outOfDate";
     }
 
 }

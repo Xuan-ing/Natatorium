@@ -42,14 +42,26 @@ public class VipUserDAO {
     }
 
     /**
-     *
-     * @param vipUser The original user object to be updated.
+     *更新数据库应该先查询后修改
+     * 否者会导致事务冲突
      */
-    public void update(VipUser vipUser) {
+    public void updatePersonInfo(int id,VipUser curVipUser) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.merge(vipUser);
+        VipUser vipUser = session.get(VipUser.class,id);
+        //System.out.println("session里的卡号："+id);
+        //System.out.println("数据库里的卡号："+vipUser.getId());
+        vipUser.setName(curVipUser.getName());
+        vipUser.setNo(curVipUser.getNo());
+        transaction.commit();
+    }
+    public void updatePassword(int id,String password) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        VipUser vipUser = session.get(VipUser.class,id);
+        vipUser.setPassword(password);
         transaction.commit();
     }
 

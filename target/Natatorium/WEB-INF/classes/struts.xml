@@ -23,7 +23,10 @@
         <action name="update" class="action.VipUserAction" method="update">
             <result name="update_success">/personInfo.jsp</result>
         </action>
-        <action name="save" class="action.VipUserAction" method="save">
+        <action name="updatePersonInfo" class="action.VipUserAction" method="updatePersonInfo">
+            <result name="save_success">/personInfo.jsp</result>
+        </action>
+        <action name="updatePasswprd" class="action.VipUserAction" method="updatePassword">
             <result name="save_success">/personInfo.jsp</result>
         </action>
         <action name="delete" class="action.VipUserAction" method="delete">
@@ -45,19 +48,28 @@
             <result name="addDiscountCard">/addDiscountCard.jsp</result>
         </action>
         <action name="selectDiscountCard" class="action.DiscountCardAction" method="selectDiscountCard">
-            <result name="selectDiscountCard">/cardDetail.jsp</result>
+            <result name="selectDiscountCard">/discountCardDetail.jsp</result>
         </action>
-        <action name="updateDiscountCard" class="action.DiscountCardAction" method="updateDiscountCard">
-            <result name="updateDiscountCard">/cardManagement.jsp</result>
+        <action name="outOfDate" class="action.DiscountCardAction" method="outOfDate">
+            <result name="updateDiscountCard">/discountCardDetail.jsp</result>
         </action>
         <action name="addPrepaidCard" class="action.PrepaidCardAction" method="addPrepaidCard">
             <result name="addPrepaidCard">/addPrepaidCard.jsp</result>
         </action>
         <action name="selectPrepaidCard" class="action.PrepaidCardAction" method="selectPrepaidCard">
-            <result name="selectPrepaidCard">/cardDetail.jsp</result>
+            <result name="selectPrepaidCard">/prepaidCardDetail.jsp</result>
         </action>
-        <action name="updatePrepaidCard" class="action.PrepaidCardAction" method="updatePrepaidCard">
-            <result name="updatePrepaidCard">/cardManagement.jsp</result>
+        <action name="reportLoss" class="action.PrepaidCardAction" method="reportLoss">
+            <result name="reportLoss" type="redirectAction">addLossEvent</result>
+        </action>
+        <action name="consume" class="action.PrepaidCardAction" method="consume">
+            <result name="consume" type="redirectAction">addConsumeEvent</result>
+        </action>
+        <action name="recharge" class="action.PrepaidCardAction" method="recharge">
+            <result name="recharge" type="redirectAction">addRechargeEvent</result>
+        </action>
+        <action name="getPrepaidCards" class="action.PrepaidCardAction" method="getPrepaidCards">
+            <result name="getPrepaidCards">/recharge.jsp</result>
         </action>
         <action name="deleteCard" class="action.CardAction" method="deleteCard">
             <result name="deleteCard">/cardManagement.jsp</result>
@@ -65,17 +77,21 @@
     </package>
 
     <package name="event" extends="struts-default" >
-        <action name="addUserEvent" class="action.RecordAction" method="addUserEvent">
-            <result name="cardManager">/cardManagement.jsp</result>
+        <action name="addConsumeEvent" class="action.RecordAction" method="addConsumeEvent">
+            <result name="addConsumeEvent">/prepaidCardDetail.jsp</result>
         </action>
 
-        <action name="addAdminEvent" class="action.RecordAction" method="addAdminEvent">
-            <result name="adminCardManager">/adminCardManagement.jsp</result>
+        <action name="addRechargeEvent" class="action.RecordAction" method="addRechargeEvent">
+            <result name="addRechargeEvent" type="redirectAction">/getPrepaidCards</result>
         </action>
 
-        <action name="addConsumptionEvent" class="action.RecordAction" method="addConsumptionEvent">
-            <result name="consumption">/home.jsp</result>
+        <action name="addLossEvent" class="action.RecordAction" method="addLossEvent">
+            <result name="addLossEvent">/prepaidCardDetail.jsp</result>
         </action>
+        <action name="addCancelLossEvent" class="action.RecordAction" method="addCancelLossEvent">
+            <result name="addCancelLossEvent">/userManager.jsp</result>
+        </action>
+
         <action name="queryRecordsByUser" class="action.RecordAction" method="queryRecordsByUser">
             <result name="queryRecordsByUser">/recordsByUser.jsp</result>
         </action>

@@ -1,51 +1,37 @@
+<%@ page import="entity.VipUser" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: 14346
-  Date: 2020/4/17
-  Time: 20:28
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%  VipUser vipUser = (VipUser) session.getAttribute("curVipUser");
+    if (vipUser == null) {%>
+<div style="text-align: center;">请先在上方登录再使用本系统！</div>
+<% } else {%>
 <html>
 <head>
-    <title>Records</title>
+    <title>流水记录</title>
 </head>
 <body>
 <table>
 
-    <caption>使用记录：</caption>
+    <caption>流水记录</caption>
+    <tr>、
+        <th>消费卡号</th>
+        <th>类型</th>
+        <th>时间</th>
+        <th>金额</th>
+    </tr>
     <s:iterator var="record" value="#session.usageRecords">
         <tr>
-            <td>卡类型：</td>
-            <td><s:property value="#record.card.type"/></td>
-        </tr>
-        <tr>
-            <td>记录类型：</td>
-            <td><s:property value="#record.type"/> </td>
-        </tr>
-        <tr>
-            <td>时间：</td>
-            <td><s:property value="#record.date"/> </td>
-        </tr>
-        <%--        <s:if test='%{#record.type=="usageRecord"}'>--%>
-        <%--            <tr>--%>
-        <%--                <td>花费：</td>--%>
-        <%--                <td><s:property value="record.balance"/></td>--%>
-        <%--            </tr>--%>
-        <%--        </s:if>--%>
-        <%--        <s:elseif test='%{#record.type=="eventRecord"}'>--%>
-        <%--            <tr>--%>
-        <%--                <td>记录类型：</td>--%>
-        <%--                <td><s:property value="record.eventType"/></td>--%>
-        <%--            </tr>--%>
-        <%--            <tr>--%>
-        <%--                <td>理由：</td>--%>
-        <%--                <td><s:property value="record.reason"/> </td>--%>
-        <%--            </tr>--%>
-        <%--        </s:elseif>--%>
+        <td><s:property value="#record.card.id"/></td>
+            <s:if test='%{#record.price>0}'>
+            <td>充值</td>
+            </s:if>
+            <s:else>
+            <td>消费</td>
+            </s:else>
+        <td><s:property value="#record.date"/></td>
+        <td><s:property value="#record.price"/></td>
     </s:iterator>
 </table>
-
+<% } %>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <body>
 <%  VipUser vipUser = (VipUser) session.getAttribute("curVipUser");
     if (vipUser == null) {%>
-<center>请先在上方登录再使用本系统！</center>
+<div style="text-align: center;">请先在上方登录再使用本系统！</div>
 <% } else {%>
     <table>
         <caption>卡包管理</caption>

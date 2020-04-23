@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="entity.card.Card" table="card" >
+    <class name="entity.card.Card" table="card" dynamic-update="true">
         <id name="id" column="id" type="java.lang.Integer">
             <generator class="increment"/>
         </id>
@@ -16,13 +16,13 @@
             <one-to-many class="entity.record.Record"/>
         </set>
 
-        <joined-subclass name="entity.card.DiscountCard" table="discount_card">
+        <joined-subclass name="entity.card.DiscountCard" table="discount_card" dynamic-update="true">
             <key column="id"/>
             <property name="discountRate" column="discount_rate" type="java.lang.Double"/>
             <property name="dueDate" column="due_date" type="java.sql.Date"/>
         </joined-subclass>
 
-        <joined-subclass name="entity.card.PrepaidCard" table="prepaid_card">
+        <joined-subclass name="entity.card.PrepaidCard" table="prepaid_card" dynamic-update="true">
             <key column="id"/>
             <property name="balance" column="balance" type="java.lang.Double"/>
         </joined-subclass>

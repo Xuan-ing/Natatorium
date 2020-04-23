@@ -16,6 +16,14 @@ public class VipUserAction extends SuperAction implements ModelDriven<VipUser> {
         return this.vipUser;
     }
 
+    public VipUser getVipUser() {
+        return vipUser;
+    }
+
+    public void setVipUser(VipUser vipUser) {
+        this.vipUser = vipUser;
+    }
+
     /**
      * 直接添加当前用户---注册
      *
@@ -40,12 +48,26 @@ public class VipUserAction extends SuperAction implements ModelDriven<VipUser> {
     }
     /*
     用户自己更新信息
-    易错：更新的对象应该是查询后再修改，而不是直接修改登入的。
-    这会导致.OptimisticLockException
+    易错：由于没有输入对象的id，所以网页的vipUser.getId()是0
+    我们修改的时候其他属性用vipUser.getXX()
+    但是查询数据库的时候应该用session.getAttribute()里的id
+    否者Exception occurred during processing request：null
 */
-    public String save() {
+    public String updatePersonInfo() {
         VipUserDAO vipUserDAO = new VipUserDAO();
-        vipUserDAO.update(vipUser);//根据填入信息
+        VipUser curVipUser= (VipUser)session.getAttribute("curVipUser");
+        //System.out.println("网页里的数据：" + vipUser.getName() +" " + vipUser.getNo());
+        vipUserDAO.updatePersonInfo(curVipUser.getId(),vipUser);//根据填入信息跟新数据库
+        VipUser newSessionVipUser = vipUserDAO.select(curVipUser.getTel());
+        session.setAttribute("curVipUser",newSessionVipUser);//用数据库的信息更新session
+        return "save_success";
+    }
+    public String updatePassword() {
+        VipUserDAO vipUserDAO = new VipUserDAO();
+        VipUser curVipUser= (VipUser)session.getAttribute("curVipUser");
+        vipUserDAO.updatePassword(curVipUser.getId(),vipUser.getPassword());//根据填入信息跟新数据库
+        VipUser newSessionVipUser = vipUserDAO.select(curVipUser.getTel());
+        session.setAttribute("curVipUser",newSessionVipUser);//用数据库的信息更新session
         return "save_success";
     }
     /**

@@ -5,14 +5,14 @@
   Time: 12:58
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="entity.VipUser" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <html>
 <body>
 <%  VipUser vipUser = (VipUser) session.getAttribute("curVipUser");
     if (vipUser == null) {%>
-    <a href="login.jsp">点击登录</a>
+<a href="login.jsp">点击登录</a>
 <% } else { %>
 <s:iterator var="curUser" value="#session.curVipUser">
     欢迎：<s:property value="#curUser.name"/>

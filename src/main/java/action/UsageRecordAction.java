@@ -1,6 +1,7 @@
 package action;
 
 import dao.RecordDAO;
+import entity.VipUser;
 import entity.card.Card;
 import entity.record.UsageRecord;
 
@@ -11,15 +12,18 @@ public class UsageRecordAction extends SuperAction {
 
     @Override
     public String execute() throws Exception {
-        List<Card> cardList =(List<Card>) session.getAttribute("cardList");
-        System.out.println("卡：" + cardList.size());
-        List<UsageRecord> usageRecords = new ArrayList<>();
-        for(int i=0;i<cardList.size();++i) {
-            List<UsageRecord> usageRecordList = new RecordDAO().listUsageRecords(cardList.get(i));
-            usageRecords.addAll(usageRecordList);
+        VipUser curVipUser = (VipUser) session.getAttribute("curVipUser");
+        List<Card> cardList = (List<Card>) session.getAttribute("cardList");
+        if(curVipUser != null) {
+            //System.out.println("卡：" + cardList.size());
+            List<UsageRecord> usageRecords = new ArrayList<>();
+            for (int i = 0; i < cardList.size(); ++i) {
+                List<UsageRecord> usageRecordList = new RecordDAO().listUsageRecords(cardList.get(i));
+                usageRecords.addAll(usageRecordList);
+            }
+            System.out.println("记录：" + usageRecords.size());
+            session.setAttribute("usageRecords", usageRecords);
         }
-        System.out.println("记录：" + usageRecords.size());
-        session.setAttribute("usageRecords", usageRecords);
         return SUCCESS;
     }
 }

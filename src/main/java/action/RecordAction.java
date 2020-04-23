@@ -1,20 +1,20 @@
 package action;
 
-import com.opensymphony.xwork2.ActionContext;
 import dao.RecordDAO;
-import dao.VipUserDAO;
-import entity.VipUser;
 import entity.card.Card;
+import entity.card.PrepaidCard;
 import entity.record.EventRecord;
 import entity.record.Record;
+import entity.record.UsageRecord;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class RecordAction extends SuperAction {
     private Record record = new Record();
-    private RecordDAO recordDAO = new RecordDAO();
-    private List<Record> recordList = new ArrayList<>();
 
     public void setRecord(Record record) {
         this.record = record;
@@ -24,45 +24,71 @@ public class RecordAction extends SuperAction {
         return record;
     }
 
-    public void setRecordDAO(RecordDAO recordDAO) {
-        this.recordDAO = recordDAO;
-    }
-
-    public List<Record> getRecordList() {
-        return recordList;
-    }
-
-    public void setRecordList(List<Record> recordList) {
-        this.recordList = recordList;
-    }
-
-    public RecordDAO getRecordDAO() {
-        return recordDAO;
-    }
 
     /**
      * 用于区分不同页面，实际都是添加了事件
      *
-     * @return
+     *
      */
-    public String addUserEvent() {
-        recordDAO.add(record);
-        return "cardManagement";
+    public String addConsumeEvent() {
+        RecordDAO recordDAO = new RecordDAO();
+        UsageRecord newUsageRecord = new UsageRecord();
+        PrepaidCard curPrepaidCard = (PrepaidCard) session.getAttribute("curPrepaidCard") ;
+        newUsageRecord.setCard(curPrepaidCard);
+        newUsageRecord.setPrice(-60.0);
+        Calendar calendar=new GregorianCalendar();
+        Date date = new Date(calendar.getTimeInMillis());
+        newUsageRecord.setDate(date);
+        newUsageRecord.setType("usageRecord");
+        recordDAO.add(newUsageRecord);
+        return "addConsumeEvent";
+    }
+    public String addRechargeEvent() {
+        RecordDAO recordDAO = new RecordDAO();
+        UsageRecord newUsageRecord = new UsageRecord();
+        PrepaidCard curPrepaidCard = (PrepaidCard) session.getAttribute("curPrepaidCard") ;
+        newUsageRecord.setCard(curPrepaidCard);
+        newUsageRecord.setPrice(100.0);
+        Calendar calendar=new GregorianCalendar();
+        Date date = new Date(calendar.getTimeInMillis());
+        newUsageRecord.setDate(date);
+        newUsageRecord.setType("usageRecord");
+        recordDAO.add(newUsageRecord);
+        return "addRechargeEvent";
     }
 
-    public String addAdminEvent() {
-        recordDAO.add(record);
-        return "adminCardManagement";
+    public String addLossEvent() {
+        RecordDAO recordDAO = new RecordDAO();
+        EventRecord newEventRecord = new EventRecord();
+        PrepaidCard curPrepaidCard = (PrepaidCard) session.getAttribute("curPrepaidCard") ;
+        newEventRecord.setCard(curPrepaidCard);
+        newEventRecord.setType("eventRecord");
+        newEventRecord.setEventType("reportLoss");
+        Calendar calendar=new GregorianCalendar();
+        Date date = new Date(calendar.getTimeInMillis());
+        newEventRecord.setDate(date);
+        recordDAO.add(newEventRecord);
+        return "addLossEvent";
+    }
+    public String addCancelLossEvent() {
+        RecordDAO recordDAO = new RecordDAO();
+        EventRecord newEventRecord = new EventRecord();
+        PrepaidCard curPrepaidCard = (PrepaidCard) session.getAttribute("curPrepaidCard") ;
+        newEventRecord.setCard(curPrepaidCard);
+        newEventRecord.setType("eventRecord");
+        newEventRecord.setEventType("cancelLoss");
+        Calendar calendar=new GregorianCalendar();
+        Date date = new Date(calendar.getTimeInMillis());
+        newEventRecord.setDate(date);
+        recordDAO.add(newEventRecord);
+        return "addCancelLossEvent";
     }
 
-    public String addConsumptionEvent() {
-        recordDAO.add(record);
-        return "consumption";
-    }
 
     public String queryRecordsByUser() {
         List<Card> cards = (List<Card>) session.getAttribute("cards");
         List<Record> allRecordsOfCards = new ArrayList<>();
+        RecordDAO recordDAO = new RecordDAO();
         for (Card card : cards) {
             List<Record> records = recordDAO.listRecords(card);
             allRecordsOfCards.addAll(records);
@@ -72,8 +98,11 @@ public class RecordAction extends SuperAction {
     }
 
     public String queryRecordsByCard() {
+        RecordDAO recordDAO = new RecordDAO();
         List<Record> records = recordDAO.listRecords(record.getCard());
         session.setAttribute("allCardRecords", records);
         return "queryRecordsByCard";
     }
+
+
 }

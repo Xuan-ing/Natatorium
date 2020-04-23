@@ -6,40 +6,57 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="305825c0-9768-4a57-9e9d-3c9d84c30235" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/action/EventRecordAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/action/UsageRecordAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recordsByUser.jsp" afterDir="false" />
+    <list default="true" id="305825c0-9768-4a57-9e9d-3c9d84c30235" name="Default Changelist" comment="add consume/recharge ,report loss">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/action/CardAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/CardAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/action/DiscountCardAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/DiscountCardAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/action/LoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/LoginAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/action/EventRecordAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/EventRecordAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/action/PrepaidCardAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/PrepaidCardAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/action/RecordAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/RecordAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/action/UsageRecordAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/UsageRecordAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/action/VipUserAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/VipUserAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/CardDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CardDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/RecordDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/RecordDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VipUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VipUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Card.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Card.hbm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/VipUser.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/VipUser.hbm.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/struts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/accountError.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/accountError.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addCard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/discountCardDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addDiscountCard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addDiscountCard.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addPrepaidCard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addPrepaidCard.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cardDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/prepaidCardDetail.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/cardManagement.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cardManagement.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/consume.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/recharge.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/left.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/left.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/record.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminCardManagement.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/navigation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/navigation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/passwordError.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/passwordError.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/personInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/personInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/recordsByUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/recordsByUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/registered.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/registered.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/Card.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/Card.hbm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/VipUser.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/VipUser.hbm.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/action/CardAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/action/CardAction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/action/RecordAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/action/RecordAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/action/VipUserAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/action/VipUserAction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/dao/CardDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/dao/CardDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/dao/RecordDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/dao/RecordDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/dao/VipUserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/dao/VipUserDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/WEB-INF/classes/struts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Natatorium/addCard.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Natatorium/cardManagement.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/cardManagement.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Natatorium/left.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/left.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Natatorium/navigation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/navigation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Natatorium/personInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Natatorium/personInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Card.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Card.hbm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/VipUser.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/VipUser.hbm.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/action/CardAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/action/CardAction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/action/RecordAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/action/RecordAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/action/VipUserAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/action/VipUserAction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dao/CardDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/CardDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dao/RecordDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/RecordDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/VipUserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/VipUserDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/struts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,21 +322,6 @@
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:natatorium@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:natatorium@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@403bab2a" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:natatorium@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@3e3d830" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:natatorium@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@363c00c7" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
             </expand>
             <select />
           </treeState>
@@ -352,7 +354,9 @@
       <workItem from="1587376711313" duration="30227000" />
       <workItem from="1587438170679" duration="1089000" />
       <workItem from="1587439353351" duration="23608000" />
-      <workItem from="1587534003814" duration="20531000" />
+      <workItem from="1587534003814" duration="20702000" />
+      <workItem from="1587611137439" duration="16037000" />
+      <workItem from="1587628286971" duration="14768000" />
     </task>
     <task id="LOCAL-00001" summary="更新了卡片管理，改正几个小bug，做了一点界面">
       <created>1587131475274</created>
@@ -389,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587566756535</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update add recordManagemet">
+      <created>1587573775807</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587573775807</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,7 +415,9 @@
     <MESSAGE value="update cardManagement and personInfo" />
     <MESSAGE value="update registered and use modelDriven" />
     <MESSAGE value="update add card" />
-    <option name="LAST_COMMIT_MESSAGE" value="update add card" />
+    <MESSAGE value="update add recordManagemet" />
+    <MESSAGE value="add consume/recharge ,report loss" />
+    <option name="LAST_COMMIT_MESSAGE" value="add consume/recharge ,report loss" />
   </component>
   <component name="WindowStateProjectService">
     <state x="297" y="121" key="#Assign_Data_Sources" timestamp="1587389645605">
@@ -467,10 +480,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1587571830852" />
-    <state x="347" y="11" key="CommitChangelistDialog2" timestamp="1587566751937">
+    <state x="347" y="11" key="CommitChangelistDialog2" timestamp="1587647675154">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="347" y="11" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587566751937" />
+    <state x="347" y="11" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587647675154" />
     <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1587108489145">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -483,62 +496,62 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587440986700" />
-    <state width="1119" height="198" key="GridCell.Tab.0.bottom" timestamp="1587573364497">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1587647675191">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587573364497" />
-    <state width="1119" height="198" key="GridCell.Tab.0.center" timestamp="1587573364496">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587647675191" />
+    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1587647675190">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587573364496" />
-    <state width="1119" height="198" key="GridCell.Tab.0.left" timestamp="1587573364495">
+    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587647675190" />
+    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1587647675190">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587573364495" />
-    <state width="1119" height="198" key="GridCell.Tab.0.right" timestamp="1587573364496">
+    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587647675190" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1587647675190">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587573364496" />
-    <state width="1119" height="198" key="GridCell.Tab.1.bottom" timestamp="1587573364353">
+    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587647675190" />
+    <state width="1119" height="138" key="GridCell.Tab.1.bottom" timestamp="1587647613319">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587573364353" />
-    <state width="1119" height="198" key="GridCell.Tab.1.center" timestamp="1587573364353">
+    <state width="1119" height="138" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587647613319" />
+    <state width="1119" height="138" key="GridCell.Tab.1.center" timestamp="1587647613319">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587573364353" />
-    <state width="1119" height="198" key="GridCell.Tab.1.left" timestamp="1587573364353">
+    <state width="1119" height="138" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587647613319" />
+    <state width="1119" height="138" key="GridCell.Tab.1.left" timestamp="1587647613319">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587573364353" />
-    <state width="1119" height="198" key="GridCell.Tab.1.right" timestamp="1587573364353">
+    <state width="1119" height="138" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587647613319" />
+    <state width="1119" height="138" key="GridCell.Tab.1.right" timestamp="1587647613319">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587573364353" />
-    <state width="1119" height="198" key="GridCell.Tab.2.bottom" timestamp="1587573364353">
+    <state width="1119" height="138" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587647613319" />
+    <state width="1119" height="138" key="GridCell.Tab.2.bottom" timestamp="1587647613320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587573364353" />
-    <state width="1119" height="198" key="GridCell.Tab.2.center" timestamp="1587573364353">
+    <state width="1119" height="138" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587647613320" />
+    <state width="1119" height="138" key="GridCell.Tab.2.center" timestamp="1587647613320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1587573364353" />
-    <state width="1119" height="198" key="GridCell.Tab.2.left" timestamp="1587573364353">
+    <state width="1119" height="138" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1587647613320" />
+    <state width="1119" height="138" key="GridCell.Tab.2.left" timestamp="1587647613320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1587573364353" />
-    <state width="1119" height="198" key="GridCell.Tab.2.right" timestamp="1587573364353">
+    <state width="1119" height="138" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1587647613320" />
+    <state width="1119" height="138" key="GridCell.Tab.2.right" timestamp="1587647613320">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1119" height="198" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1587573364353" />
+    <state width="1119" height="138" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1587647613320" />
     <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1587440056059">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1587440056059" />
-    <state x="291" y="3" width="1038" height="821" key="SettingsEditor" timestamp="1587556854255">
+    <state x="291" y="3" width="1038" height="821" key="SettingsEditor" timestamp="1587643996549">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="291" y="3" width="1038" height="821" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587556854255" />
+    <state x="291" y="3" width="1038" height="821" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587643996549" />
     <state x="361" y="148" key="Vcs.Push.Dialog.v2" timestamp="1587566767512">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -547,10 +560,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="623" y="308" width="315" height="220" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1536.824@0.0.1536.824" timestamp="1586182018704" />
-    <state x="387" y="273" key="com.intellij.ide.util.TipDialog" timestamp="1587534064646">
+    <state x="387" y="273" key="com.intellij.ide.util.TipDialog" timestamp="1587611135544">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="387" y="273" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587534064646" />
+    <state x="387" y="273" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587611135544" />
     <state x="734" y="363" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587570832135">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -579,10 +592,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1587110552261" />
-    <state x="54" y="146" width="672" height="678" key="search.everywhere.popup" timestamp="1587408697483">
+    <state x="54" y="146" width="672" height="678" key="search.everywhere.popup" timestamp="1587616704491">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="54" y="146" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587408697483" />
+    <state x="54" y="146" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587616704491" />
     <state x="496" y="213" key="struts2 file set editor" timestamp="1587441651284">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

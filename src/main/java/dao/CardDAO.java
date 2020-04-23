@@ -31,15 +31,19 @@ public class CardDAO {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        DiscountCard discountCard = (DiscountCard) session.get(DiscountCard.class,id);
+        DiscountCard discountCard = session.get(DiscountCard.class,id);
         transaction.commit();
         return discountCard;
     }
-    public void updateDiscountCard(DiscountCard discountCard) {
+    /*
+    折扣卡过期
+     */
+    public void updateDiscountCard(int id) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        session.merge(discountCard);
+        DiscountCard discountCard = session.get(DiscountCard.class,id);
+        discountCard.setAvailability(false);
         transaction.commit();
     }
     public void addPrepaidCard(PrepaidCard prepaidCard) {
@@ -53,23 +57,54 @@ public class CardDAO {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        PrepaidCard prepaidCard = (PrepaidCard) session.get(PrepaidCard.class,id);
+        PrepaidCard prepaidCard = session.get(PrepaidCard.class,id);
         transaction.commit();
         return prepaidCard;
     }
-    public void updatePrepaidCard(PrepaidCard prepaidCard) {
+    /*
+    消费
+     */
+    public void updatePrepaidCardAvailability(int id) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        session.merge(prepaidCard);
+        PrepaidCard prepaidCard = session.get(PrepaidCard.class,id);
+        prepaidCard.setAvailability(false);
+        transaction.commit();
+    }
+    /*
+    挂失
+     */
+    public void updatePrepaidCardBalance(int id) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        PrepaidCard prepaidCard = session.get(PrepaidCard.class,id);
+        double balance = prepaidCard.getBalance();
+        if(balance > 60)
+            prepaidCard.setBalance(balance-60);
         transaction.commit();
     }
 
-    /**
-     *
-     * @param id ID segment in Card table.
-     * @return The selected card object.
-     */
+    public void recharge(int id) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        PrepaidCard prepaidCard = session.get(PrepaidCard.class,id);
+        double balance = prepaidCard.getBalance();
+        prepaidCard.setBalance(balance+100);
+        transaction.commit();
+    }
+    public List<PrepaidCard> listPrepaidCard(VipUser user) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("from entity.card.PrepaidCard card where card.vipUser.id=:id").setParameter("id", user.getId());
+        List<PrepaidCard> result = query.list();
+        session.close();
+        sessionFactory.close();
+        return result;
+    }
+
     public Card get(int id) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
@@ -93,13 +128,10 @@ public class CardDAO {
 
 
     public List<Card> listCards(VipUser curUser) {
-        //System.out.println(curUser.getName());
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        //System.out.println(curUser.getTel());
         Query query = session.createQuery("from entity.card.Card card where card.vipUser.id=:id").setParameter("id", curUser.getId());
         List<Card> result = query.list();
-        //System.out.println(result.get(0).getAvailability());
         session.close();
         sessionFactory.close();
         return result;
